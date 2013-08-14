@@ -1,0 +1,12 @@
+=start work on new branch
+ git co -b "name of branch"
+=often add and commit when you finish a feature
+git add .
+git commit -m"this is your commit message"
+
+=When you're ready to merge your changes into the master so everyone can use them, do this:
+
+git checkout master
+git pull origin master
+git merge "your branch name"
+git push origin master
