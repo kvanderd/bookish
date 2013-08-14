@@ -20,6 +20,30 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test, :development do
+ # Can be used to ensure a clean state for testing.
+  gem 'database_cleaner'
+  #makes testing with rspec easier
+  gem 'shoulda-matchers'
+  #alternative to irb
+  gem 'pry'
+  #this is great. Shows active record schema (models)
+  gem 'annotate'
+  #this is amazing. Turns errors into a live console.
+  gem 'better_errors'
+  #put ap before params etc.  to see better terminal output.
+  gem 'awesome_print'
+  #testing framework
+  gem 'factory_girl_rails'
+   #rspec test
+  gem 'rspec-rails'
+  #Capybara helps you test web applications by 
+  # simulating how a real user would interact with your app.
+  gem 'capybara'
+  #create test data
+  gem 'faker'
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
