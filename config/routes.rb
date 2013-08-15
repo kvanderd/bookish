@@ -4,7 +4,8 @@ Bookish::Application.routes.draw do
   resources :pages
   resources :widgets
   resources :widget_templates
-  
+  resources :users
+  resources :sessions
   # The priority is based upon order of creation:
   # first created -> highest priority.
    

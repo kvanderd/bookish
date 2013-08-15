@@ -6,7 +6,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  name       :string(255)
-#
+
 
 class Page < ActiveRecord::Base
   # attr_accessible :title, :body
