@@ -11,3 +11,42 @@
  *= require_self
  *= require_tree .
  */
+
+
+body{
+  margin: 0;
+}
+
+header{
+  margin-top: 0;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  background: black;
+  font-family: 'Roboto', sans-serif;
+}
+
+header a{
+  color: white;
+  text-decoration: none;
+}
+
+#title{
+  margin-left: 10%;
+  font-size: 1.5em;
+}
+
+nav{
+  float: right;
+  display: inline-block;
+  /*margin: auto;*/
+  margin-top: .2em;
+  margin-right: 10%;
+  line-height: 1.5em;
+  height: 7em;
+}
+
+nav a {
+  color: #999999;
+}
+
+
