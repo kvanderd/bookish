@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130814022104) do
+ActiveRecord::Schema.define(:version => 20130815170336) do
 
   create_table "blobs", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -24,13 +24,19 @@ ActiveRecord::Schema.define(:version => 20130814022104) do
   end
 
   create_table "stories", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "title"
+    t.string   "author_first_name"
+    t.string   "author_last_name"
+    t.text     "copyright_info"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "image"
   end
 
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "password_digest"
+    t.boolean  "author"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

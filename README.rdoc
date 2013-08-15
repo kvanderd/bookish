@@ -10,3 +10,8 @@ git checkout master
 git pull origin master
 git merge "your branch name"
 git push origin master
+
+
+
+=How to install image magic - mac ports:
+http://sethvargo.com/20110726/install-imagemagick-on-mountain-lion/
