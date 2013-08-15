@@ -13,6 +13,6 @@
 #
 
 class Story < ActiveRecord::Base
-  attr_accessible :image
+  attr_accessible :image, :title, :author_first_name, :author_last_name, :copyright_info
   mount_uploader :image, ImageUploader
 end

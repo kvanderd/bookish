@@ -1,0 +1,10 @@
+<%= form_for @story do |f| %>
+<p><%= f.text_field :title, placeholder: "title" %></p>
+<p><%= f.text_field :author_first_name, placeholder: "first name" %></p>
+<p><%= f.text_field :author_last_name, placeholder: "last name" %></p>
+<p><%= f.text_area :copyright_info, placeholder: "Copyright" %></p>
+<p><%= f.file_field :image %></p>
+<p><%= f.submit %></p>
+<% end %>
+</p>
+<div id="book"></div>
