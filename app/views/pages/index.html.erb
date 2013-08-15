@@ -1,0 +1,25 @@
+<h2>Bookish </h2>
+
+<h1>Listing Pages</h1>
+
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+  
+<table>
+
+<% @pages.each do |page| %>
+  <tr>
+    <td><%= page.name %></td>
+    <td><%= link_to 'Show', page %></td>
+    <td><%= link_to 'Edit', edit_page_path(page) %></td>
+    <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'New Page', new_page_path %><br />
+<%= link_to "Go to Stories list", stories_path %>
