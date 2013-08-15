@@ -1,0 +1,27 @@
+
+<h1>Listing widget_templates</h1>
+
+
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+  
+<table>
+
+<% @widget_templates.each do |widget_template| %>
+  <tr>
+    <td><%= widget_template.name %></td>
+    <td><%= widget_template.classtype %></td>
+    <td><%= link_to 'Show', widget_template %></td>
+    <td><%= link_to 'Edit', edit_widget_template_path(widget_template) %></td>
+    <td><%= link_to 'Destroy', widget_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Execute', widget_template, method: :execute %> </td> 
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New widget_template', new_widget_template_path %><br />
+
+

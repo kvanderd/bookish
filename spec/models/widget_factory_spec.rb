@@ -1,16 +1,15 @@
 # == Schema Information
 #
-# Table name: widgets
+# Table name: widget_factories
 #
 #  id         :integer          not null, primary key
+#  name       :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-require 'test_helper'
+require 'spec_helper'
 
-class WidgetTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+describe WidgetTemplate do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

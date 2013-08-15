@@ -1,3 +1,3 @@
-class Blob < ActiveRecord::Base
+class BlobWidget < Widget 
   # attr_accessible :title, :body
 end
