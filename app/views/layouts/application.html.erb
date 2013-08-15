@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bookish</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<title>Bookish</title>
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
-<%= render "layouts/navigation" %>
-<%= yield %>
+<header>
 
+		<%= render "layouts/navigation" %>
+</header>
+	<div id="container">
+		<%= yield %>
+	</div>
 </body>
 </html>
