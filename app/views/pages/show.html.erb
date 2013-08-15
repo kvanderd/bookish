@@ -2,11 +2,13 @@
  
 <p id="notice"><%= notice %></p>
 
+<h2> Story: [Not Yet Hooked Up]</h2>
 <p>
-  <strong>Name:</strong>
+  <strong>Page Name:</strong>
   <%= @page.name %>
 </p>
 
+<strong>Widgets for this page:</strong>
 <table>
 <% if @widgets_list%>
 <%       @widgets_list.each do |widget| %>
@@ -18,7 +20,7 @@
   </tr>
 <% end %>
 <% else %>
- There are no widgets in this page
+ There are no widgets associated with this page
  <%end%>
 
 </table>
@@ -28,7 +30,8 @@
 <%#= link_to 'Execute Instruction Set', @widget_set, method: :execute %>
 
 
-<%= link_to 'New Widget', new_widget_path(:set_id => params[:id])%>
+<%= link_to 'Add a Widget', new_widget_path(:page_id => params[:id])%>
+<p>
 
 
 

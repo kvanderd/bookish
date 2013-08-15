@@ -8,5 +8,11 @@
 </div>
 	  <% else %>
 	<%= link_to "create account", new_user_path, id: "create_account" %>
+	<p>
+	<%= link_to "Show Stories", stories_path, id: "create_account" %>
+	<p>
+		<p>
+	<h2> Administrative Tools</h2><p>
+<%= link_to 'Manage WidgetTemplates', widget_templates_path %><br />
 	<% end %>
 </nav>

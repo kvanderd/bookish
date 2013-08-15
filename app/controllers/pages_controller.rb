@@ -19,7 +19,7 @@ class PagesController < ApplicationController
 		@page = Page.new()
     @page.name = params[:page][:name]
       if @page.save
-        session[:set_id] = @page.id
+        session[:page_id] = @page.id
         flash[:notice] = "Page: #{@page.name} was successfully created."
         redirect_to action: 'index'
       else
@@ -27,21 +27,16 @@ class PagesController < ApplicationController
       end
   end
 
-  #needs to be rethought
+  #needs to be rethought, perhaps merged with show
   def edit
-  	@page = Page.find(params[:id])
-  	@widgets_list = Widget.where(page_id:  params[:id])
-  	@widgets.each do |widget|
-  			widget.configure
-  	end
-  	flash[:notice] = "Page: #{@page.name} was configured."
-    redirect_to action: 'index'
+  	redirect_to action: "show"
+  	
   end
 
 	def show
 		@page = Page.find(params[:id])
-		@widgets = Widget.where(page_id:  params[:id])
-    session[:set_id] = params[:id]
+		@widgets_list = Widget.where(page_id:params[:id])
+    session[:page_id] = params[:id]
 	end
 
 	

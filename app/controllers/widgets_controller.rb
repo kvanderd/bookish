@@ -26,11 +26,9 @@ class WidgetsController < ApplicationController
 		@widget.save
 
     #each different kind of widget can have its own view. We get the name of the view from the widget itself.
-    
-    if view_path == calc_view
-      render view_path
-    else redirect_to :controller => "pages",  :action => "show", :id => session[:page_id]
-    end
+    view_path = calc_view("new")
+    raise "unable to derive a view path for this class" if !view_path
+    render view_path
 	end
 
 	def destroy
@@ -41,15 +39,18 @@ class WidgetsController < ApplicationController
 
   def show
   	 @widget= Widget.find(params[:id]) 
-  	 if view_path == calc_view
-      render view_path
-     else redirect_to :controller => "pages",  :action => "show", :id => session[:page_id]
-     end
+
+     view_path = calc_view("show")
+     raise "unable to derive a view path for this class" if !view_path
+     render view_path
+     
   end
 
   def edit
-       logger.debug ("Editing Instruction : #{self.name}")
-       #run editing/config process
+    @widget= Widget.find(params[:id])
+     view_path = calc_view("edit")
+     raise "unable to derive an edit view path for this class" if !view_path
+     render view_path
   end
 
  
@@ -57,16 +58,18 @@ class WidgetsController < ApplicationController
   def update
     @widget = Widget.find(params[:id]) 
     @widget.name = params[:widget][:name]
-    @widget.content = params[:widget][:content]
+    @widget.html_block_1 = params[:widget][:html_block_1]
     @widget.save
+    redirect_to @widget
 
   end
 
-  #each different kind of widget can have its own view. We get the name of the view from the widget itself.
-  def calc_view()
+  #each different type of widget can have its own view. We get the name of the view from the widget itself.
+  def calc_view(action)
     view_path = @widget.get_view
     if view_path
-      view_path << ".html.erb"
+      #perhaps use pluralize here?
+      view_path << "s/" <<action
       return view_path
     else return nil
     end

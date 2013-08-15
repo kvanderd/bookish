@@ -1,0 +1,21 @@
+
+ 
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @widget.name %>
+</p>
+<p>
+  <strong>HTML:</strong>
+  <% if @widget.html_block_1 %>
+  <%=			@widget.html_block_1 %>
+  <%	else%> There is no HTML associated with this content widget
+  <%	end%> 
+</p>
+
+
+
+ <td><%= link_to 'Edit', edit_widget_path %></td>
+
+<%= link_to 'Back', pages_path %>
