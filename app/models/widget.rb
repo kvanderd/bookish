@@ -27,6 +27,13 @@ class Widget < ActiveRecord::Base
     super
   end
 
+  #the base class version of update is for selecting the type of a new widget
+  def process(params)
+    @widget.name = params[:widget][:name]
+    @widget.html_block_1 = params[:widget][:html_block_1]
+    
+  end
+
   def add_to_page(page_id)
   	@page = Page.find(page_id)
   	@page.widgets << self

@@ -57,11 +57,11 @@ class WidgetsController < ApplicationController
 
   def update
     @widget = Widget.find(params[:id]) 
-    @widget.name = params[:widget][:name]
-    @widget.html_block_1 = params[:widget][:html_block_1]
-    @widget.save
-    redirect_to @widget
-
+    @widget.process(params)
+    if @widget.save
+      redirect_to @widget
+    else raise "update of widget failed"
+    end
   end
 
   #each different type of widget can have its own view. We get the name of the view from the widget itself.

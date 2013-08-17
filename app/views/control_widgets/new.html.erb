@@ -1,0 +1,33 @@
+<h1>New Control Widget</h1>
+
+<%= form_for(@widget, :method => :put) do |f| %>
+  <% if @widget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@widget.errors.count, "error") %> prohibited this widget from being saved:</h2>
+
+      <ul>
+      <% @widget.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<strong> Choice 1 </strong>- Enter your choice text here</br>
+<%= text_field_tag 'choice_1', '' %> <p>
+
+Select Destination </br>
+<%= collection_select(:widget, :first_dest_id, Page.all, :id, :name) %><p>
+
+<strong> Choice 2 </strong>- Enter your choice text here</br>
+<%= text_field_tag 'choice_2', '' %><p>
+
+Select Destination </br>
+<%= collection_select(:widget, :second_dest_id, Page.all, :id, :name) %>
+  
+<div class="actions">
+    <%= f.submit %>
+</div>
+<% end %>
+
+<%= link_to 'Back', widgets_path %>
