@@ -1,7 +1,9 @@
+
 Bookish::Application.routes.draw do
   root :to => 'stories#index'
-  resources :stories
+  resources :stories 
   resources :pages
+
   resources :widgets
   resources :widget_templates
   resources :users
