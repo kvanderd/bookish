@@ -1,4 +1,4 @@
-<h1>New Control Widget</h1>
+<h1>Edit Control Widget</h1>
 
 <%= form_for(@widget, :method => :put) do |f| %>
   <% if @widget.errors.any? %>
@@ -12,6 +12,8 @@
       </ul>
     </div>
   <% end %>
+
+NOT YET IMPLEMENTED
 
 <strong> Choice 1 </strong>- Enter your choice text here</br>
 <%= text_field_tag 'choice_1', '' %> <p>
