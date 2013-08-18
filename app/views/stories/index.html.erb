@@ -1,9 +1,10 @@
 
-<h2>My Stories </h2>
+<h1>Select an Adventure to Go on or Make one yourself .....</h1>
 
-<%= link_to "Manage Pages", pages_path %>
-<p>
-<p>
-<p>
-<p>	
 
+<% if @stories %>
+	<% @stories.each do |story| %>
+		<h3>Title: <%= link_to story.title, story_path(story.id) %></h3>
+		<h4> Author: <%= story.author_first_name %> <%= story.author_last_name %></h4>
+	<% end %>
+<% end %>

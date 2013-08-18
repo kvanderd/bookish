@@ -1,7 +1,8 @@
 class StoriesController < ApplicationController
   
   def index
-  	@story = Story.new()
+  	# @story = Story.new()
+    @stories = Story.all
   end
 
   def new

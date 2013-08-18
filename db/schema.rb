@@ -11,10 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130815213918) do
+ActiveRecord::Schema.define(:version => 20130815170336) do
 
   create_table "pages", :force => true do |t|
     t.string   "name"
+    t.integer  "story_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -46,12 +47,12 @@ ActiveRecord::Schema.define(:version => 20130815213918) do
   end
 
   create_table "widgets", :force => true do |t|
+    t.text     "html_block_1"
+    t.string   "name"
+    t.string   "type"
+    t.integer  "page_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.string   "type"
-    t.string   "name"
-    t.integer  "page_id"
-    t.text     "html_block_1"
   end
 
 end

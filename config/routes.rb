@@ -1,13 +1,14 @@
 
 Bookish::Application.routes.draw do
   root :to => 'stories#index'
-  resources :stories 
-  resources :pages
 
+  resources :stories do
+    resources :pages
+  end
   resources :widgets
-  resources :widget_templates
   resources :users
   resources :sessions
+  resources :widget_templates
   # The priority is based upon order of creation:
   # first created -> highest priority.
    
