@@ -9,7 +9,7 @@
 
 
 class Page < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :id, :name, :story_id
   belongs_to :story
   has_many :widgets
 end

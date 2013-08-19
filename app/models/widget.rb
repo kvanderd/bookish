@@ -13,7 +13,7 @@
 #The initial two templates a Content Widget (aka Blob of HTML) and Control Widget (aka 2 Choice Question)
 
 class Widget < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :page_id, :html_block_1, :name, :type
   belongs_to :page
 
   #allows classes to use the main Instruction controller without errors. STI issue.

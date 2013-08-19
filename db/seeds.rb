@@ -16,10 +16,11 @@ widget_id = 1
                author_last_name: Faker::Name.last_name, copyright_info: Faker::Company.catch_phrase)
 
   4.times do 
-  	Page.create(id: page_id, name: Faker::Name.title, story_id: id )
+  	Page.create(id: page_id, name: Faker::Name.title, story_id: id)
   	
   	2.times do 
-  		Widget.create(id: widget_id, name: Faker::Name.first_name, type: Faker::Company.bs,  html_block_1: Faker::Lorem.characters(char_count = 255) )
+  		Widget.create(id: widget_id, name: Faker::Name.first_name, type: Faker::Company.bs, 
+  		 html_block_1: Faker::Lorem.characters(char_count = 255), page_id: page_id)
         widget_id += 1
   	end
   		page_id += 1
@@ -27,7 +28,5 @@ widget_id = 1
   id += 1
 end
 
-WidgetTemplate.create(name: 'Content Widget', classtype: 'ContentWidget')
-WidgetTemplate.create(name: 'Control Widget', classtype: 'ControlWidget')
 
 
