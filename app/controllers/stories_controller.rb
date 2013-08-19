@@ -16,6 +16,7 @@ class StoriesController < ApplicationController
 
   def show
    @story = Story.find(params[:id])
+   @pages = Page.where(story_id: @story.id)
   end
   
 end

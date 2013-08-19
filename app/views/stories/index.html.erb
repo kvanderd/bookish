@@ -4,7 +4,7 @@
 
 <% if @stories %>
 	<% @stories.each do |story| %>
-		<h3>Title: <%= link_to story.title, story_path(story.id) %></h3>
+		<h3>Title: <%= link_to story.title, story_path(story) %></h3>
 		<h4> Author: <%= story.author_first_name %> <%= story.author_last_name %></h4>
 	<% end %>
 <% end %>
