@@ -17,9 +17,10 @@
 <% @pages.each do |page| %>
   <tr>
     <td><%= page.name %></td>
-    <td><%= link_to 'Show', page %></td>
-    <td><%= link_to 'Edit', edit_story_page_path(page) %></td>
-    <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', story_page_path(@story.id) %></td>
+    <td><%= link_to 'Edit', edit_story_page_path(@story.id) %></td>
+    <td><%= link_to 'Destroy', story_page_path(@story.id), method: :delete, 
+    				data: { confirm: 'Are you sure?' } %></td>
     
   </tr>
 <% end %>
