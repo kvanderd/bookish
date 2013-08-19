@@ -8,6 +8,7 @@ class PagesController < ApplicationController
 		  @page = Page.new()
     
       @page.name = params[:page][:name]
+      @page.story_id = params[:story_id]
       if @page.save
         session[:page_id] = @page.id
         flash[:notice] = "Page: #{@page.name} was successfully created."
@@ -24,6 +25,7 @@ class PagesController < ApplicationController
   def index
     @story = Story.find(params["story_id"])
     @pages = @story.pages
+    
   end
 
   def destroy
