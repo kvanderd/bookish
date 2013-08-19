@@ -7,6 +7,9 @@
 <h2><%= @story.title %></h2>
 <h3><%= @story.author_first_name %> <%= @story.author_last_name %>  </h3>
 
+<h3><%= @story.copyright_info %> </h3>
+
+
 <h2>Pages</h2>
 
 <table>
@@ -26,3 +29,4 @@
 <br />
 <%= link_to 'New Page', new_story_page_path(@story.id) %><br />
 <%= link_to "Go to Stories list", stories_path %>
+
