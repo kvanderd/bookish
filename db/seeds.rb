@@ -19,7 +19,7 @@ widget_id = 1
   	Page.create(id: page_id, name: Faker::Name.title, story_id: id)
   	
   	2.times do 
-  		Widget.create(id: widget_id, name: Faker::Name.first_name, type: Faker::Company.bs, 
+  		Widget.create(id: widget_id, name: Faker::Name.first_name, type: 'ContentWidget', 
   		 html_block_1: Faker::Lorem.characters(char_count = 255), page_id: page_id)
         widget_id += 1
   	end
@@ -28,5 +28,7 @@ widget_id = 1
   id += 1
 end
 
+WidgetTemplate.create(name: 'Content Widget', classtype: 'ContentWidget')
+WidgetTemplate.create(name: 'Control Widget', classtype: 'ControlWidget')
 
 

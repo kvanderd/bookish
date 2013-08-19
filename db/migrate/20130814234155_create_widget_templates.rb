@@ -4,7 +4,6 @@ class CreateWidgetTemplates < ActiveRecord::Migration
       t.string :name
       t.string :classtype
       t.text :code
-
       t.timestamps
     end
   end

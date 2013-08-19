@@ -3,9 +3,11 @@
 # Table name: pages
 #
 #  id         :integer          not null, primary key
+#  name       :string(255)
+#  story_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  name       :string(255)
+#
 
 
 class Page < ActiveRecord::Base

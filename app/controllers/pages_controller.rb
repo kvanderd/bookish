@@ -24,8 +24,6 @@ class PagesController < ApplicationController
 
   def index
     @story = Story.find(params["story_id"])
-    @pages = @story.pages
-    
   end
 
   def destroy
@@ -47,8 +45,8 @@ class PagesController < ApplicationController
 
 	def show
 		@page = Page.find(params[:id])
-		@widgets_list = Widget.where(page_id:params[:id])
-    session[:page_id] = params[:id]
+		# @widgets_list = Widget.where(page_id:params[:id])
+    # session[:page_id] = params[:id]
 	end
 
 	
