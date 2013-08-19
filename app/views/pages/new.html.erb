@@ -1,8 +1,10 @@
+<%= render "navigation" %>
+
 <h1>New Page</h1>
-<%= form_for :page, url: pages_path do |f| %>
+<%= form_for :page do |f| %>
   <p>
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_area :name %>
   </p>
  
 

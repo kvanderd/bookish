@@ -12,41 +12,45 @@
  *= require_tree .
  */
 
+#container {
+ margin: 20px auto;
+ width: 1500px;
+ padding: 0px 20px 20px 20px;
+ border: 1px dotted black;
 
-body{
-  margin: 0;
 }
 
-header{
-  margin-top: 0;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  background: black;
-  font-family: 'Roboto', sans-serif;
+
+nav {
+  display: inline-block;
+  height: 7em;
+  width: 100%;
+  background-color:black;
+  margin-top: -1em ;
+  padding-right: -10px;
+  padding-left: -20px;
 }
 
-header a{
-  color: white;
-  text-decoration: none;
-}
-
-#title{
-  margin-left: 10%;
+nav ul li {
+  color: #fff;
+  display: inline-block;
+  position: relative;
+  list-style: none;
+  float: right;
+  margin-right: 1em;
   font-size: 1.5em;
 }
 
-nav{
-  float: right;
-  display: inline-block;
-  /*margin: auto;*/
-  margin-top: .2em;
-  margin-right: 10%;
-  line-height: 1.5em;
-  height: 7em;
-}
-
 nav a {
-  color: #999999;
+  color: white;
 }
 
+nav #title {
+  position: relative;
+  display: inline-block;
+  float: left;
+  
+  font-size: 4em;
+  color: white;
+}
 

@@ -1,14 +1,14 @@
 class PagesController < ApplicationController
 
 	def new
+    @page = Page.new()
   end
 
   def index
-			@pages = Page.all
+		@pages = Page.all
 	end
 
   def destroy
-
    @page = Page.find(params[:id])
    @page.destroy
    redirect_to :action => "index"

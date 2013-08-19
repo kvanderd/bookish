@@ -15,3 +15,6 @@ git push origin master
 
 =How to install image magic - mac ports:
 http://sethvargo.com/20110726/install-imagemagick-on-mountain-lion/
+
+==widget_templte
+  widgets live inside a template and a widget_template lives inside a page

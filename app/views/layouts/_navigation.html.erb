@@ -1,18 +1,16 @@
 <nav>
 	<%= link_to 'Bookish', root_path, id: "title" %>
-  <p><%= link_to 'Create Adventure', new_story_path %></p>
+	<ul>
+  <li><%= link_to 'Create Adventure', new_story_path %></li>
 <div id="current_user_nav">
 	<% if current_user %>
-	  <h2>Welcome: <%= current_user.username %>
-	  <%= link_to 'Logout', session_path(current_user), :method => :delete, id: "logout" %></h2>
+	 <li> <h2>Welcome: <%= current_user.username %></li>
+	  <li><%= link_to 'Logout', session_path(current_user), :method => :delete, id: "logout" %></h2></li>
 </div>
 	  <% else %>
-	<%= link_to "create account", new_user_path, id: "create_account" %>
-	<p>
-	<%= link_to "Show Stories", stories_path, id: "create_account" %>
-	<p>
-		<p>
-	<h2> Administrative Tools</h2><p>
-<%= link_to 'Manage WidgetTemplates', widget_templates_path %><br />
+	<li><%= link_to "create account", new_user_path, id: "create_account" %></li>
+	<!-- <h2> Administrative Tools</h2><p> -->
+<%# link_to 'Manage WidgetTemplates', widget_templates_path %>
 	<% end %>
+</ul>
 </nav>
