@@ -27,6 +27,12 @@ class Widget < ActiveRecord::Base
     super
   end
 
+  def process(params)
+    @widget.name = params[:widget][:name]
+    @widget.html_block_1 = params[:widget][:html_block_1]
+    
+  end
+
   def add_to_page(page_id)
   	@page = Page.find(page_id)
   	@page.widgets << self
@@ -41,4 +47,17 @@ class Widget < ActiveRecord::Base
     	raise "someone is trying to use the abstract widget class"
     end
   end
+
+  #this won't work until and unless I find a way to execute 
+  def get_data
+    current_class = self.becomes(self.type.constantize)
+    if current_class != self 
+      #call the override in the subclass to get the right view
+      current_class.get_data
+    else
+      raise "someone is trying to use the abstract widget class"
+    end
+
+  end
+
 end

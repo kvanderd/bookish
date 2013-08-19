@@ -1,5 +1,31 @@
 <%= image_tag @story.image_url(:thumb) if @story.image? %>
 
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
 <h2><%= @story.title %></h2>
 <h3><%= @story.author_first_name %> <%= @story.author_last_name %>  </h3>
+
 <h3><%= @story.copyright_info %> </h3>
+
+
+<h2>Pages</h2>
+
+<table>
+
+<% @pages.each do |page| %>
+  <tr>
+    <td><%= page.name %></td>
+    <td><%= link_to 'Show', page %></td>
+    <td><%= link_to 'Edit', edit_story_page_path(page) %></td>
+    <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'New Page', new_story_page_path(@story.id) %><br />
+<%= link_to "Go to Stories list", stories_path %>
+

@@ -1,0 +1,37 @@
+<h1>Edit Control Widget</h1>
+
+<%= form_for(@widget, :method => :put) do |f| %>
+  <% if @widget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@widget.errors.count, "error") %> prohibited this widget from being saved:</h2>
+
+      <ul>
+      <% @widget.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+NOT YET IMPLEMENTED
+
+<strong> Choice 1 </strong>- Enter your choice text here</br>
+<%= text_field_tag 'choice_1', '' %> <p>
+
+Select Destination </br>
+
+<%= select_tag 'dest1_page_id', options_from_collection_for_select(@data[:control_widget][:pages_list], 'id', 'name') %><p>
+
+
+<strong> Choice 2 </strong>- Enter your choice text here</br>
+<%= text_field_tag 'choice_2', '' %><p>
+
+Select Destination </br>
+<%= select_tag 'dest2_page_id', options_from_collection_for_select(@data[:control_widget][:pages_list], 'id', 'name') %><p>
+  
+<div class="actions">
+    <%= f.submit %>
+</div>
+<% end %>
+
+<%= link_to 'Back', widgets_path %>

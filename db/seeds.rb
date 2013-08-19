@@ -5,6 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
 require "faker"
 
 id = 1
@@ -25,4 +26,8 @@ widget_id = 1
   end
   id += 1
 end
+
+WidgetTemplate.create(name: 'Content Widget', classtype: 'ContentWidget')
+WidgetTemplate.create(name: 'Control Widget', classtype: 'ControlWidget')
+
 
