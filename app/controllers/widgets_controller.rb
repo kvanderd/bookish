@@ -43,6 +43,7 @@ class WidgetsController < ApplicationController
 
   def show
   	 @widget= Widget.find(params[:id]) 
+     
 
      #view_path = calc_view("show")
      #raise "unable to derive a view path for this class" if !view_path
@@ -84,7 +85,6 @@ class WidgetsController < ApplicationController
 
   def calc_data
     @data = {}
-    debugger
         #ask the widget to retrieve any data it's portion of the view is going to need
     widget, datafields = @widget.get_data
     @data[widget] = datafields

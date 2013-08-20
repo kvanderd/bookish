@@ -9,13 +9,22 @@ class PagesController < ApplicationController
     
       @page.name = params[:page][:name]
       @page.story_id = params[:story_id]
+      
       if @page.save
+        #automatically add the appropriate widgets, based on the structure
+        @page.structure = @page.build_structure
+        #have to save again to save the structuremap
+        @page.save
         session[:page_id] = @page.id
         flash[:notice] = "Page: #{@page.name} was successfully created."
         redirect_to action: 'index'
       else
       	raise ("failed to save a page")
       end
+
+
+
+
     else
       #we're rendering a blank form for a new page
       @page = Page.new()
@@ -46,9 +55,12 @@ class PagesController < ApplicationController
   end
 
 	def show
+    @story = Story.find(params["story_id"])
 		@page = Page.find(params[:id])
-		@widgets_list = Widget.where(page_id:params[:id])
+		#@widgets_list = Widget.where(page_id:params[:id])
+    debugger
     session[:page_id] = params[:id]
+
 	end
 
 	

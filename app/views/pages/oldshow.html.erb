@@ -1,0 +1,39 @@
+
+
+<%= render 'layouts/story_header' %>
+
+
+  <strong>Page Name:</strong>
+  <%= @page.name %>
+
+
+<strong>Widgets for this page:</strong>
+<table>
+<% if @widgets_list%>
+<%       @widgets_list.each do |widget| %>
+  <tr>
+    <td><%= widget.name %></td>
+    <td><%= link_to 'Show', widget %></td>
+    <td><%= link_to 'Edit', edit_widget_path(widget) %></td>
+    <td><%= link_to 'Destroy', widget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+<% else %>
+ There are no widgets associated with this page
+ <%end%>
+
+</table>
+
+<br />
+
+<%#= link_to 'Execute Instruction Set', @widget_set, method: :execute %>
+
+
+<%= link_to 'Add a Widget', new_widget_path(:page_id => params[:id])%>
+<p>
+
+
+
+<%#= link_to 'Edit', edit_widget_set_path(params[:id]) %> 
+
+<%= link_to 'Back', pages_path %>

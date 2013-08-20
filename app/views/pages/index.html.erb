@@ -1,12 +1,5 @@
-<h2>Bookish! </h2>
 
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
-
-<h2><%= @story.title %></h2>
-<h3><%= @story.author_first_name %> <%= @story.author_last_name %>  </h3>
-
+<%= render 'layouts/story_header' %>
 
 <h2>Manage Pages</h2>
 
@@ -20,9 +13,9 @@
 <% @pages.each do |page| %>
   <tr>
     <td><%= page.name %></td>
-    <td><%= link_to 'Show', story_page_path(@story.id) %></td>
-    <td><%= link_to 'Edit', edit_page_path(page) %></td>
-    <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', story_page_path(:story_id => @story.id, :id => page.id) %></td>
+    <td><%= link_to 'Edit', edit_story_page_path(:story_id => @story.id, :id => page.id) %></td>
+    <td><%= link_to 'Destroy', story_page_path(:story_id => @story.id, :id => page.id) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
     
   </tr>
 <% end %>
