@@ -3,37 +3,19 @@ class WidgetsController < ApplicationController
 
   def new
   	@widget = Widget.new
-    session[:page_id] = params[:page_id]
-
+    session[:page_id] = params[:id]
+    #call the widget's custom initiation code, which varies from widget to widget.
+    @widget.init_data
+    @widget.save
   end
 
   def index
       @widgets = Widget.all
   end
 
-  #There are many different types of widgets, such as blobs and widgets. We track them all in the 
-  #widgets table using STI. 
-	def create	
-		@widget = Widget.new
-
-    #TODO: probably move this to model
-    #find the classtype from the list of definitions in the WidgetTemplate table
-    template = WidgetTemplate.find(params[:widget_template][:factory_id])
-  
-    #storing the classtype in a column called "type" enables STI
-    @widget.type = template.classtype
-    #set the friendly name of the widget
-    @widget.name = template.name    
-    @widget.add_to_page(session[:page_id])
-		@widget.save
- 
-    @data = calc_data
-
-    #each different kind of widget can have its own view. We get the name of the view from the widget itself.
-    view_path = calc_view("new")
-    raise "unable to derive a view path for this class" if !view_path
-    render view_path
-	end
+	#def create	
+	#	raise ("hey, create was called. something is kooky.")
+	#end
 
 	def destroy
    @widget= Widget.find(params[:id])
@@ -42,32 +24,33 @@ class WidgetsController < ApplicationController
   end
 
   def show
+     raise "show method in Widget Controller called. refactor."
   	 @widget= Widget.find(params[:id]) 
-     
-
-     #view_path = calc_view("show")
-     #raise "unable to derive a view path for this class" if !view_path
-     redirect_to :controller => "pages",  :action => "show", :id => session[:page_id]
-     
+     redirect_to :controller => "pages",  :action => "show", :id => session[:page_id] 
   end
 
   def edit
     @widget= Widget.find(params[:id])
-  
-     view_path = calc_view("edit")
-     data = calc_data
-     raise "unable to derive an edit view path for this class" if !view_path
-     render view_path
+    @story_id = session[:story_id]
+    session[:page_id] = @widget.page_id
+
+    #load any additional data that the view will need
+    @widget.get_data
+    
+    view_path = calc_view("edit")
+    raise "unable to derive an edit view path for this class" if !view_path
+    render view_path
   end
 
  
 
   def update
     @widget = Widget.find(params[:id]) 
-    #call the appropriate widget model to set up any widget-specific logic.
-    @widget.process(params)
+    #call the appropriate widget model to store widget-specific data.
+    @widget.set_data(params)
     if @widget.save
-      redirect_to @widget
+      redirect_to story_page_path(:story_id => session[:story_id], :id => session[:page_id])
+      #:controller => "pages",  :action => "show", :id => session[:story_id]
     else raise "update of widget failed"
     end
   end
@@ -83,11 +66,6 @@ class WidgetsController < ApplicationController
     end
   end
 
-  def calc_data
-    @data = {}
-        #ask the widget to retrieve any data it's portion of the view is going to need
-    widget, datafields = @widget.get_data
-    @data[widget] = datafields
-    return @data
-  end
+
+  
 end

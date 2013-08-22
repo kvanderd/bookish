@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130819224818) do
+ActiveRecord::Schema.define(:version => 20130821210114) do
 
   create_table "pages", :force => true do |t|
     t.string   "name"
@@ -48,12 +48,12 @@ ActiveRecord::Schema.define(:version => 20130819224818) do
   end
 
   create_table "widgets", :force => true do |t|
-    t.text     "html_block_1"
+    t.text     "data"
     t.string   "name"
     t.string   "type"
     t.integer  "page_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

@@ -2,8 +2,9 @@ class PagesController < ApplicationController
 
   def new
     
-    @story = Story.where(id: params["story_id"])
-    if params["commit"] == "Save Page"
+    @story = Story.where(id: params[:story_id])
+    if params[:commit] == "Save Page"
+
       #we're saving a set of page data that has just been created
 		  @page = Page.new()
     
@@ -22,9 +23,6 @@ class PagesController < ApplicationController
       	raise ("failed to save a page")
       end
 
-
-
-
     else
       #we're rendering a blank form for a new page
       @page = Page.new()
@@ -32,7 +30,7 @@ class PagesController < ApplicationController
   end
 
   def index
-    @story = Story.find(params["story_id"])
+    @story = Story.find(params[:story_id])
     @pages = @story.pages
     
   end
@@ -43,7 +41,6 @@ class PagesController < ApplicationController
    redirect_to :action => "index"
   end
 
-
   def create
     raise ("shouldn't be here. this functionality was merged into the 'new' method")
   end
@@ -51,16 +48,12 @@ class PagesController < ApplicationController
   #needs to be rethought, perhaps merged with show
   def edit
   	redirect_to action: "show"
-  	
   end
 
 	def show
-    @story = Story.find(params["story_id"])
+    @story = Story.find(params[:story_id])
 		@page = Page.find(params[:id])
-		#@widgets_list = Widget.where(page_id:params[:id])
-    debugger
     session[:page_id] = params[:id]
-
 	end
 
 	

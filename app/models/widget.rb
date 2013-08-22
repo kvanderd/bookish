@@ -3,6 +3,10 @@
 # Table name: widgets
 #
 #  id         :integer          not null, primary key
+#  data       :text
+#  name       :string(255)
+#  type       :string(255)
+#  page_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -15,7 +19,8 @@
 class Widget < ActiveRecord::Base
   # attr_accessible :title, :body
   belongs_to :page
-
+  serialize :data, Hash
+  
   #allows classes to use the main Instruction controller without errors. STI issue.
   #See "allows children to use their parents routes. " http://www.alexreisner.com/code/single-table-inheritance-in-rails
   def self.inherited(child)
@@ -28,8 +33,9 @@ class Widget < ActiveRecord::Base
   end
 
   def process(params)
+    raise ("why are you here? this shouldn't be called in the base class")
     @widget.name = params[:widget][:name]
-    @widget.html_block_1 = params[:widget][:html_block_1]
+    @widget.data = params[:widget][:data]
     
   end
 

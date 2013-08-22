@@ -8,8 +8,8 @@
 </p>
 <p>
   <strong>HTML:</strong>
-  <% if @widget.html_block_1 %>
-  <%=			@widget.html_block_1 %>
+  <% if @widget.data[:html_block_1] %>
+  <%=			@widget.data[:html_block_1] %>
   <%	else%> There is no HTML associated with this content widget
   <%	end%> 
 </p>

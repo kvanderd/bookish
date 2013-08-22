@@ -13,25 +13,24 @@
     </div>
   <% end %>
 
-NOT YET IMPLEMENTED
-
 <strong> Choice 1 </strong>- Enter your choice text here</br>
-<%= text_field_tag 'choice_1', '' %> <p>
+<%= text_field_tag :choice_1_label_1, @widget.data[:control_widget][:choice_1_label_1] %> <p>
 
 Select Destination </br>
 
-<%= select_tag 'dest1_page_id', options_from_collection_for_select(@data[:control_widget][:pages_list], 'id', 'name') %><p>
+<%= select_tag :choice_1_dest1_page_id, options_from_collection_for_select(@widget.data[:control_widget][:pages_list], 'id', 'name', selected=@widget.data[:control_widget][:choice_1_dest1_page_id].to_i) %><p>
 
 
 <strong> Choice 2 </strong>- Enter your choice text here</br>
-<%= text_field_tag 'choice_2', '' %><p>
+<%= text_field_tag :choice_2_label_1, @widget.data[:control_widget][:choice_2_label_1] %><p>
 
 Select Destination </br>
-<%= select_tag 'dest2_page_id', options_from_collection_for_select(@data[:control_widget][:pages_list], 'id', 'name') %><p>
+<%= select_tag :choice_2_dest2_page_id, options_from_collection_for_select(@widget.data[:control_widget][:pages_list], 'id', 'name', selected=@widget.data[:control_widget][:choice_2_dest1_page_id].to_i) %><p>
   
 <div class="actions">
     <%= f.submit %>
 </div>
 <% end %>
 
-<%= link_to 'Back', widgets_path %>
+<%= render 'layouts/nav_footer' %>
+

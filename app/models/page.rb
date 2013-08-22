@@ -3,9 +3,12 @@
 # Table name: pages
 #
 #  id         :integer          not null, primary key
+#  name       :string(255)
+#  story_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  name       :string(255)
+#  structure  :text
+#
 
 
 class Page < ActiveRecord::Base
@@ -24,14 +27,20 @@ class Page < ActiveRecord::Base
   	#the structuremap keeps track of the relationship between the ids of the specific widgets we create here...
   	#and the variables expected by the structure's partial form.
   	structuremap = {}
-		debugger
   	#for each defined widget, create it and link it to this page
   	structure_definition.each do |key, value|  
   		widget = Widget.new
   		widget.page_id = self.id
   		#set the class of the widget for STI
   		widget.type = value.to_s
-  		widget.save
+      widget.save
+
+      #in order to call the subclass-specific initiation, the widget has to be converted to the child widget
+      subclasswidget = widget.becomes(value.to_s.constantize)
+      subclasswidget.init_data
+      #have to save twice. ugly.
+      subclasswidget.save
+
   		structuremap[key] = widget.id
   	end
   	

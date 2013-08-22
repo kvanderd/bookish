@@ -1,10 +1,11 @@
+#Widget Templates are used to create templates. Right now, all they do is 
+#populate the widget chooser list boxes
 class WidgetTemplatesController < ApplicationController
   def new
       @widget_template = WidgetTemplate.new()
   end
 
   def destroy
-
    @widget_template = WidgetTemplate.find(params[:id])
    @widget_template.destroy
    redirect_to action: "index"
