@@ -4,19 +4,22 @@
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
 
-<h2><%= @story.title %></h2>
-<h3><%= @story.author_first_name %> <%= @story.author_last_name %>  </h3>
+<h2> Story Title: <%= @story.title %></h2>
+<h3>Author :<%= @story.author_first_name %> <%= @story.author_last_name %>  </h3>
 
-<h2>Pages</h2>
+<h3> Copyright: <%= @story.copyright_info %> </h3>
+
+
+<h2>Manages Pages</h2>
 
 <table>
 
-<% @pages.each do |page| %>
+<% @story.pages.each do |page| %>
   <tr>
     <td><%= page.name %></td>
     <td><%= link_to 'Show', story_page_path(@story.id) %></td>
-    <td><%= link_to 'Edit', edit_story_page_path(@story.id) %></td>
-    <td><%= link_to 'Destroy', story_page_path(@story.id), method: :delete, 
+    <td><%= link_to 'Edit', edit_story_page_path(page) %></td>
+    <td><%= link_to 'Destroy', story_page_path(page.id), method: :delete, 
     				data: { confirm: 'Are you sure?' } %></td>
     
   </tr>
@@ -26,3 +29,4 @@
 <br />
 <%= link_to 'New Page', new_story_page_path(@story.id) %><br />
 <%= link_to "Go to Stories list", stories_path %>
+

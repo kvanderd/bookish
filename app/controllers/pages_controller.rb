@@ -32,7 +32,6 @@ class PagesController < ApplicationController
   def index
     @story = Story.find(params[:story_id])
     @pages = @story.pages
-    
   end
 
   def destroy
@@ -54,6 +53,7 @@ class PagesController < ApplicationController
     @story = Story.find(params[:story_id])
 		@page = Page.find(params[:id])
     session[:page_id] = params[:id]
+
 	end
 
 	

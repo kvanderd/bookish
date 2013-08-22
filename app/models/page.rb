@@ -33,8 +33,6 @@ class Page < ActiveRecord::Base
   	structure_definition.each do |key, value|  
   		widget = Widget.new
       widget.init(self.id, value)
-
-
   		structuremap[key] = widget.id
   	end
   	

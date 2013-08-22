@@ -1,25 +1,8 @@
+<p>Page Name: <%= @widget.page.name %></p>
+<p>Widget Name: <%= @widget.name %></p>
+<p>Text :<%= @widget.html_block_1 %></p>
+<p>Type :<%= @widget.type %></p>
 
- 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @page.name %>
-</p>
-
-<table>
-<% if @widgets_list%>
-<%       @widgets_list.each do |widget| %>
-  <tr>
-    <td><%= widget.name %></td>
-    <td><%= link_to 'Show', widget %></td>
-    <td><%= link_to 'Edit', edit_widget_path(widget) %></td>
-    <td><%= link_to 'Destroy', widget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-<% else %>
- There are no widgets in this page
- <%end%>
 
 </table>
 

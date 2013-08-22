@@ -9,8 +9,22 @@
 require "faker"
 
 id = 1
+page_id = 1
+widget_id = 1
 20.times do
-  Story.create(id: id, title: Faker::Company.bs, author_first_name: Faker::Name.first_name , author_last_name: Faker::Name.last_name)
+  Story.create(id: id, title: Faker::Company.bs, author_first_name: Faker::Name.first_name, 
+               author_last_name: Faker::Name.last_name, copyright_info: Faker::Company.catch_phrase)
+
+  4.times do 
+  	Page.create(id: page_id, name: Faker::Name.title, story_id: id)
+  	
+  	2.times do 
+  		Widget.create(id: widget_id, name: Faker::Name.first_name, type: 'ContentWidget', 
+  		 html_block_1: Faker::Lorem.characters(char_count = 255), page_id: page_id)
+        widget_id += 1
+  	end
+  		page_id += 1
+  end
   id += 1
 end
 

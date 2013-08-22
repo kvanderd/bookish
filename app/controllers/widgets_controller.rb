@@ -10,7 +10,7 @@ class WidgetsController < ApplicationController
   end
 
   def index
-      @widgets = Widget.all
+    @widgets = Widget.all
   end
 
 	def destroy
@@ -23,6 +23,7 @@ class WidgetsController < ApplicationController
      raise "show method in Widget Controller called. refactor."
   	 @widget= Widget.find(params[:id]) 
      redirect_to :controller => "pages",  :action => "show", :id => session[:page_id] 
+
   end
 
   def edit
@@ -59,6 +60,4 @@ class WidgetsController < ApplicationController
     end
   end
 
-
-  
 end
