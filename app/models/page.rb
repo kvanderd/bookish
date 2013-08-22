@@ -19,6 +19,8 @@ class Page < ActiveRecord::Base
   serialize :structure, Hash
 
 
+  #the structure of a page is the ordered list of widgets that make up that page. 
+  #for V1, we have just a single hardwired structure_definition
   def build_structure
   	
   	#placeholder. This will normally be queried
@@ -30,16 +32,8 @@ class Page < ActiveRecord::Base
   	#for each defined widget, create it and link it to this page
   	structure_definition.each do |key, value|  
   		widget = Widget.new
-  		widget.page_id = self.id
-  		#set the class of the widget for STI
-  		widget.type = value.to_s
-      widget.save
+      widget.init(self.id, value)
 
-      #in order to call the subclass-specific initiation, the widget has to be converted to the child widget
-      subclasswidget = widget.becomes(value.to_s.constantize)
-      subclasswidget.init_data
-      #have to save twice. ugly.
-      subclasswidget.save
 
   		structuremap[key] = widget.id
   	end

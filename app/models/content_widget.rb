@@ -13,30 +13,25 @@
 
 class ContentWidget < Widget 
 
-	def get_view
-		return "content_widget"
-	end
-
-	#set up the form elements for displaying a Content Widget
-	def process(params)
-    self.name = params[:widget][:name]
-    debugger
-    self.data = params[:widget][:data]
-  end
-
-	 #each different class of widget initializes the base widget "data" attribute
+	#each different class of widget initializes the base widget "data" attribute
   #by defining any necessary items.
 	def init_data
-		self.data[:content_widget]= {}
-		d = self.data[:content_widget]
-		d[:html_block_1]=""
-	
+		classhash = self.data[:content_widget] = {}
+		classhash[:html_block_1]=""
 	end
 
+	#a widget's set_data method is called in update methods, to map params to the appropriate parts of the data hash
 	def set_data(params)	
 		self.data[:content_widget][:html_block_1] = params[:html_block_1]
 	end
 
+	#called in edit and show methods to grab any data that the view needs that isn't already in the data hash
+	#an example: an updated list of Pages for a Story view.
 	def get_data()	
+	end
+
+  #called in edit and show methods to find the correct view erb file
+	def get_view
+		return "content_widget"
 	end
 end

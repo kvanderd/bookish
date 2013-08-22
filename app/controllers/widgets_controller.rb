@@ -13,10 +13,6 @@ class WidgetsController < ApplicationController
       @widgets = Widget.all
   end
 
-	#def create	
-	#	raise ("hey, create was called. something is kooky.")
-	#end
-
 	def destroy
    @widget= Widget.find(params[:id])
    @widget.destroy
@@ -36,13 +32,10 @@ class WidgetsController < ApplicationController
 
     #load any additional data that the view will need
     @widget.get_data
-    
     view_path = calc_view("edit")
     raise "unable to derive an edit view path for this class" if !view_path
     render view_path
   end
-
- 
 
   def update
     @widget = Widget.find(params[:id]) 

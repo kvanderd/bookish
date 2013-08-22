@@ -20,7 +20,7 @@ class Widget < ActiveRecord::Base
   # attr_accessible :title, :body
   belongs_to :page
   serialize :data, Hash
-  
+
   #allows classes to use the main Instruction controller without errors. STI issue.
   #See "allows children to use their parents routes. " http://www.alexreisner.com/code/single-table-inheritance-in-rails
   def self.inherited(child)
@@ -32,11 +32,36 @@ class Widget < ActiveRecord::Base
     super
   end
 
-  def process(params)
-    raise ("why are you here? this shouldn't be called in the base class")
-    @widget.name = params[:widget][:name]
-    @widget.data = params[:widget][:data]
-    
+  #this initialization is currently called when a Page is created, which is currently
+  #the only place widgets get created.
+  def init(page_id, widget_classname)
+      self.page_id = page_id
+      #set the class of the widget for STI
+      self.type = widget_classname.to_s
+      self.save
+
+      #in order to call the subclass-specific init_data method, the widget has to be converted to the child widget
+      subclasswidget = self.becomes(self.type.constantize)
+      subclasswidget.init_data
+      #have to save twice. ugly. better way?
+      subclasswidget.save
+  end
+
+  #each different class of widget initializes the base widget "data" attribute
+  #by defining any necessary items.
+  def init_data
+    raise "someone is trying to use the abstract widget class. bad idea"
+  end
+
+  #called in edit and show methods to grab any data that the view needs that isn't already in the data hash
+  #an example: an updated list of Pages for a Story view.
+  def get_data
+    raise "someone is trying to use the abstract widget class. bad idea"
+  end
+
+  #a widget's set_data method is called in update methods, to map params to the appropriate parts of the data hash
+  def set_data
+    raise "someone is trying to use the abstract widget class. bad idea"
   end
 
   def add_to_page(page_id)
@@ -45,25 +70,10 @@ class Widget < ActiveRecord::Base
   end
 
   def get_view
-    current_class = self.becomes(self.type.constantize)
-    if current_class != self 
-    	#call the override in the subclass to get the right view
-    	current_class.get_view
-    else
-    	raise "someone is trying to use the abstract widget class"
-    end
+    	raise "someone is trying to use the abstract widget class. bad idea"
   end
 
-  #this won't work until and unless I find a way to execute 
-  def get_data
-    current_class = self.becomes(self.type.constantize)
-    if current_class != self 
-      #call the override in the subclass to get the right view
-      current_class.get_data
-    else
-      raise "someone is trying to use the abstract widget class"
-    end
+ 
 
-  end
 
 end
