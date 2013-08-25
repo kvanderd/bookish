@@ -14,6 +14,7 @@
 
 class Story < ActiveRecord::Base
 	has_many :pages
-  attr_accessible :image, :title, :author_first_name, :author_last_name, :copyright_info
+	belongs_to :user
+  attr_accessible :image, :title, :author_first_name, :author_last_name, :copyright_info, :user_id
   mount_uploader :image, ImageUploader
 end

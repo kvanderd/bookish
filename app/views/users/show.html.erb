@@ -1,0 +1,11 @@
+<h2>Welcome <%= @user.username %></h2>
+
+<% if @user.stories %>
+<h2>You have created <%= @user.stories.count %> stories.</h2>
+ <h3><%= @user.username %>'s Stories</h3>
+  <% @user.stories.each do |story| %>
+     <h3>Title: <%= link_to story.title, story_path(story) %></h3>
+		 <h4> Author: <%= story.author_first_name %> <%= story.author_last_name %></h4>
+  <% end %>
+<% end %>
+

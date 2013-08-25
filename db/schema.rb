@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20130821210114) do
     t.string   "author_first_name"
     t.string   "author_last_name"
     t.text     "copyright_info"
+    t.integer  "user_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.string   "image"

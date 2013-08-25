@@ -18,11 +18,11 @@ widget_id = 1
   4.times do 
   	Page.create(id: page_id, name: Faker::Name.title, story_id: id)
   	
-  	2.times do 
-  		Widget.create(id: widget_id, name: Faker::Name.first_name, type: 'ContentWidget', 
-  		 html_block_1: Faker::Lorem.characters(char_count = 255), page_id: page_id)
-        widget_id += 1
-  	end
+  	# 2.times do 
+  	# 	Widget.create(id: widget_id, name: Faker::Name.first_name, type: 'ContentWidget', 
+  	# 	 html_block_1: Faker::Lorem.characters(char_count = 255), page_id: page_id)
+   #      widget_id += 1
+  	# end
   		page_id += 1
   end
   id += 1

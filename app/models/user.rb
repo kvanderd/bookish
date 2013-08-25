@@ -20,6 +20,7 @@
 #
 
 class User < ActiveRecord::Base
+	has_many :stories
   attr_accessible :username, :password
   has_secure_password
 end

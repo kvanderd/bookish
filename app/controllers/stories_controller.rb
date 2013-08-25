@@ -6,7 +6,11 @@ class StoriesController < ApplicationController
   end
 
   def new
-  	@story = Story.create()
+    if current_user
+  	  @story = Story.create!(user_id: current_user.id)
+    else
+      @story = Story.create!
+    end
   end
 
   def update 
