@@ -1,10 +1,16 @@
 
-<h1>Select an Adventure to Go on or Make one yourself .....</h1>
 
-
+<div class="span12"> 
 <% if @stories %>
 	<% @stories.each do |story| %>
-		<h3>Title: <%= link_to story.title, story_path(story) %></h3>
-		<h4> Author: <%= story.author_first_name %> <%= story.author_last_name %></h4>
+		<div class="span3">
+			<%= image_tag story.image_url(:thumb), class: "thumbnail" if story.image? %>
+			<h4>Title: <%= link_to story.title, story_path(story) %></h4>
+			<h5> Author: <%= story.author_first_name %> <%= story.author_last_name %></h5>
+		</div>
 	<% end %>
 <% end %>
+</div>
+
+
+     

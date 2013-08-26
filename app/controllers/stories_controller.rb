@@ -6,15 +6,27 @@ class StoriesController < ApplicationController
   end
 
   def new
+  	@story = Story.new()
+  end
+
+  def create
     if current_user
-  	  @story = Story.create!(user_id: current_user.id)
+      @story = Story.create!(params[:story])
+      user_love = current_user.id
+      @story.user_id = current_user.id
+      @story.save!
     else
-      @story = Story.create!
+      @story = Story.create!(params[:story])
     end
+      redirect_to story_path(@story.id)
   end
 
   def update 
-    @story = Story.create(params[:story])
+    if current_user
+      @story = Story.create(params[:story], user_id: current_user.id)
+    else
+      @story = Story.create(params[:story])
+    end
       redirect_to story_path(@story.id)
   end
 
